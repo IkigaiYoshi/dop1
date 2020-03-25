@@ -9,9 +9,9 @@ PED = 0;
 
 for i = 1 : N
     %     Источник
-    indexCode = randi([1 K],1,1);%генерация индекса код. слова
+    indexCode = randi([1 K],1,1); %генерация индекса код. слова
     %     CRC-r
-    mX = codes(indexCode, :); % берём код. слово по индексу из код. книжки
+    mX = codes(indexCode, :); %берём код. слово по индексу из код. книжки
     %     BPSK
     mS = mX.*-2 + 1;
     
@@ -23,7 +23,7 @@ for i = 1 : N
     %     CRC-r ^-1
     flag_sum = sum(xor(mX_, mX)); 
     
-    PED = PED + (flag_sum > 0 & sum(modGx(mX_, gX)) == 0); 
+    PED = PED + (flag_sum > 0 & sum(modGx(mX_, gX)) == 0);
     
     PeBit = PeBit + flag_sum; % количество ошибок в код слове
 end
