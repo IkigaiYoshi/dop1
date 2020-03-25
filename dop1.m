@@ -2,26 +2,30 @@ clc
 clear
 close
 
-E = 1;
-k = 4;
+E = 1; % средняя энергия сигнала
+k = 4; % длина кодируемой последовательности
 N = 200000; % количество сообщений при моделировании
 
+% Порождающие многочлены
 %gX = x^16+x^13+x^12+x^11+x^10+x^8+x^6+x^5+x^2+1
 %gX = [1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1];
 
 %gX = x^4+x^3+x^2+1
 gX = [1, 1, 1, 0, 1];
-codes = codeBook(k, gX);
+codes = codeBook(k, gX); % функция формирования кодового слова 
 
+% отношение сигнал/шум
 SNRdB = -20 : -10;
-PeBits = zeros (1, length(SNRdB));
-PEDs = zeros (1, length(SNRdB));
+PeBits = zeros (1, length(SNRdB)); % вероятность ошибки на бит
+PEDs = zeros (1, length(SNRdB)); % верхняя ошибка декодирования
 
+% Моделирование
 for i = 1 : length(SNRdB)
     disp(SNRdB(i));
     SNR = 10.^(SNRdB(i)/10);
     sigma = sqrt(E / (2*SNR));
     
+    % функция моделирования передачи N пакетов
     [PeBit, PED] = model(k, gX, codes, sigma, N);
     
     PeBits(1, i) = PeBit;
@@ -39,7 +43,7 @@ r = length(gX) - 1;
 PEDs_asimp = (ones(1, length(SNRdB)) ./ 2).^ r;
 
 %Точная вероятность ошибки декодирования CRC:
-A = A_func(codes);
+A = A_func(codes); % Функция формирования множества кодовых слов веса i
 d_min = min(sum(codes(2:end, :),2));
 n = r + k;
 
