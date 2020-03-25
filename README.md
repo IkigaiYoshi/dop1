@@ -1,10 +1,20 @@
 Допуск 1
 ---
 
-![](https://i.ibb.co/8gPK0Sw/2020-03-23-19-08.png)
+#### Описание файлов
 
-![](https://i.ibb.co/Bf13wkH/2020-03-23-19-08.png)
+* `dop1` - Главный файл. В нем происходит инициализация переменых, вызов функции моделирования передачи сообщений, расчет вероятностей, построение графиков;
+* `codeBook` - функция формирования множества кодовых слов;
+* `model` - функция можелирования передачи сообщений в канале;
+* `A_func` - функция формирования множества кодовых слов веса *i*, где *i* - индекс от 0 до *n* (длины кодового слова);
+* `modGx` - функция взятия по модулю.
 
-![](https://sun9-71.userapi.com/YVHU6jL35w3PxTk5RXYzZoGcGbjr1JbNi43vMQ/-PsdzCUlRvg.jpg)
+#### Результаты моделирования
 
-![](https://sun9-62.userapi.com/92l393eB8JDzGqybTZhj9dkI11gq7Lr9b4_RVA/hOCJMaG9IgA.jpg)
+График зависимости вероятности ошибки на бит(практической и теоретической) от шума: ![](https://sun9-51.userapi.com/iv3gFibTyP4KevtE3e1wV-wAydU8gPxz_xJUNg/AHvcz_tFNM8.jpg)
+
+При увеличении: ![](https://sun9-50.userapi.com/nwGCcwOZFbVeQqWfAO2Kht80hRxGE36ws1K86A/VyoVdwkqoKA.jpg)
+
+График зависимости вероятности ошибки декодера от шума: ![](https://sun9-8.userapi.com/g4LXJtmvX3LvIs8i52U4crn9j2PoYkGCJxv1RQ/qiDKoNEc1Os.jpg)
+
+При увеличении: ![](https://sun9-45.userapi.com/tr8SK0vL3uJaqzEQe3mx9LK3BjKy9b8Oo4_shw/V6qYDxfBXeQ.jpg)
